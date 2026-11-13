@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Naiga Hawah, software developer in Kampala, Uganda. Frontend, Django backend, and building products people use.">
+  <title>Naiga Hawah | Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#faf7f0;
+      --navy:#1c3a5e;
+      --gold:#d4a21c;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --line:#e8e3d6;
+      --serif:'Fraunces',Georgia,serif;
+      --sans:'Inter',system-ui,sans-serif;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--sans); background:var(--bg); color:var(--navy); line-height:1.7; }
+    a { color:inherit; }
+    .wrap { max-width:1040px; margin:0 auto; padding:0 24px; }
+    section { padding:84px 0; }
+    .label { color:var(--gold); font-weight:600; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:10px; display:block; }
+    h2 { font-family:var(--serif); font-weight:600; font-size:clamp(1.9rem,4vw,2.6rem); line-height:1.15; margin-bottom:28px; }
+    h2 em, h1 em { color:var(--gold); font-style:italic; }
+
+    nav { position:sticky; top:0; z-index:10; background:rgba(250,247,240,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+    nav .wrap { display:flex; justify-content:space-between; align-items:center; height:68px; }
+    .logo { font-family:var(--serif); font-weight:600; font-size:1.3rem; text-decoration:none; }
+    .logo span { color:var(--gold); }
+    nav ul { display:flex; gap:32px; list-style:none; }
+    nav ul a { text-decoration:none; color:var(--muted); font-size:.82rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
+    nav ul a:hover { color:var(--navy); }
+
+    .hero { padding:80px 0 70px; }
+    .hero .wrap { display:flex; gap:56px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .hero-text { flex:1 1 400px; }
+    .hero h1 { font-family:var(--serif); font-weight:600; font-size:clamp(2.6rem,6.5vw,4.2rem); line-height:1.08; margin-bottom:24px; }
+    .hero p { color:var(--muted); font-size:1.15rem; max-width:540px; }
+    .btns { margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; }
+    .btn { padding:15px 28px; border-radius:999px; text-decoration:none; font-weight:600; font-size:.98rem; border:1.5px solid var(--navy); }
+    .btn.primary { background:var(--navy); color:#fff; box-shadow:0 8px 20px rgba(28,58,94,.25); }
+    .btn.ghost { color:var(--navy); }
+
+    .photo-box { position:relative; width:300px; height:370px; flex:0 0 auto; margin:0 auto; }
+    .photo-box::before { content:""; position:absolute; top:-20px; right:-24px; width:100%; height:100%; border:2px solid var(--gold); border-radius:150px 150px 20px 20px; z-index:0; }
+    .photo-box img { position:relative; z-index:1; width:100%; height:100%; object-fit:cover; object-position:top; border-radius:150px 150px 20px 20px; background:#e8e3d6; box-shadow:0 20px 50px rgba(28,58,94,.18); display:block; }
+    .badge { position:absolute; z-index:2; left:-36px; bottom:-14px; background:#fff; border-radius:14px; padding:14px 20px; box-shadow:0 10px 30px rgba(28,58,94,.15); }
+    .badge small { display:block; color:var(--gold); font-weight:600; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; }
+    .badge strong { font-size:.95rem; }
+
+    .about p { color:var(--muted); font-size:1.05rem; max-width:720px; margin-bottom:18px; }
+    .facts { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; margin-top:32px; }
+    .fact { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; font-weight:500; }
+    .fact small { display:block; color:var(--gold); font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; }
+
+    .skills { display:flex; flex-wrap:wrap; gap:12px; list-style:none; }
+    .skills li { background:var(--card); border:1px solid var(--line); border-radius:999px; padding:10px 22px; font-weight:500; font-size:.95rem; }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:22px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px; box-shadow:0 6px 20px rgba(28,58,94,.05); }
+    .card h3 { font-family:var(--serif); font-weight:600; font-size:1.25rem; margin-bottom:10px; }
+    .card p { color:var(--muted); font-size:.96rem; }
+    .stack { margin-top:16px; color:var(--gold); font-weight:600; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; }
+
+    .contact { text-align:center; }
+    .contact p { color:var(--muted); max-width:520px; margin:0 auto; }
+    .contact .btns { justify-content:center; }
+    footer { text-align:center; padding:30px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line); }
+
+    @media (max-width:760px) {
+      nav ul { display:none; }
+      .hero { padding-top:44px; }
+      .photo-box { width:260px; height:330px; }
+      .photo-box::before { right:-14px; }
+      .badge { left:-10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">Naiga<span>.</span>Hawah</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#beyond">Beyond Code</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-text">
+      <h1>Software developer <em>building for real people.</em></h1>
+      <p>I'm Naiga Hawah, a software developer in Kampala. I build clean, useful web products from the interface people see to the backend that powers it.</p>
+      <div class="btns">
+        <a href="#projects" class="btn primary">See my work</a>
+        <a href="#contact" class="btn ghost">Get in touch</a>
+      </div>
+    </div>
+    <div class="photo-box">
+      <img src="hawah.jpeg" alt="Naiga Hawah">
+      <div class="badge"><small>Developer</small><strong>Kampala, Uganda</strong></div>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <span class="label">About</span>
+    <h2>A developer who <em>can also talk to people.</em></h2>
+    <p>I'm a Software Engineering diploma student at ISBAT University in Kampala, and I'm currently interning at Yukon Software. I started on the frontend and now I'm working on the backend too, using Django. I enjoy seeing a whole feature come together, from the button someone clicks to the data behind it.</p>
+    <p>Before I wrote code, I spent years in public speaking and debating. That's why I explain my ideas clearly, listen carefully to what users need, and turn it into something simple that works.</p>
+    <p>I'm also co-founding a software company with a partner, so I'm learning product thinking, sales, and business as well as engineering.</p>
+    <div class="facts">
+      <div class="fact"><small>Studying</small>Software Engineering, ISBAT University</div>
+      <div class="fact"><small>Currently</small>Intern at Yukon Software</div>
+      <div class="fact"><small>Building</small>A software company, with a co-founder</div>
+      <div class="fact"><small>Based in</small>Kampala, Uganda</div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="label">Skills</span>
+    <h2>What I <em>work with.</em></h2>
+    <ul class="skills">
+      <li>HTML &amp; CSS</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Vite</li>
+      <li>Python</li>
+      <li>Django</li>
+      <li>Git &amp; GitHub</li>
+      <li>Product thinking</li>
+      <li>Communication</li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <span class="label">Projects</span>
+    <h2>Things I've <em>built.</em></h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Mushanga SACCO System</h3>
+        <p>A management system for a savings cooperative, with dashboards for each role and a member dashboard where features are unlocked with manager approval.</p>
+        <div class="stack">React · Vite · Django</div>
+      </div>
+      <div class="card">
+        <h3>Family Tracker 2.0</h3>
+        <p>My frontend internship project at Yukon Software, where I work with a real team on a product people use.</p>
+        <div class="stack">Frontend · Teamwork</div>
+      </div>
+      <div class="card">
+        <h3>IntelliFlow Uganda</h3>
+        <p>An early-stage idea for smarter traffic signals on Ugandan roads, using computer vision on existing cameras. A research and product project I'm exploring.</p>
+        <div class="stack">Research · Product · AI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="wrap">
+    <span class="label">Beyond Code</span>
+    <h2>The person <em>behind the code.</em></h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Public speaking</h3>
+        <p>Years of debating taught me to structure an argument and hold a room. I bring that into demos, pitches, and team discussions.</p>
+      </div>
+      <div class="card">
+        <h3>Running a business</h3>
+        <p>I run a business on the side, which keeps me close to customers, pricing, and the daily work of making something people want.</p>
+      </div>
+      <div class="card">
+        <h3>Always learning</h3>
+        <p>I'm moving from frontend into full-stack, and I learn by building real things, not just following tutorials.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="label">Contact</span>
+    <h2>Let's work <em>together.</em></h2>
+    <p>Open to internships, junior developer roles, collaborations, and good conversations.</p>
+    <div class="btns">
+      <a href="mailto:hawahnaiga000@gmail.com" class="btn primary">hawahnaiga000@gmail.com</a>
+      <a href="https://www.linkedin.com/in/hawah-naiga" class="btn ghost">LinkedIn</a>
+      <a href="https://github.com/HawahNaiga" class="btn ghost">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>Naiga Hawah · Software Developer · Kampala, Uganda</footer>
+
+</body>
+</html>
