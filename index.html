@@ -38,6 +38,8 @@
     nav ul a { text-decoration:none; color:var(--muted); font-size:.82rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
     nav ul a:hover { color:var(--navy); }
 
+    .menu-btn { display:none; background:none; border:1.5px solid var(--navy); color:var(--navy); border-radius:10px; padding:6px 12px; font-size:1.2rem; cursor:pointer; }
+
     .hero { padding:80px 0 70px; }
     .hero .wrap { display:flex; gap:56px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
     .hero-text { flex:1 1 400px; }
@@ -68,6 +70,8 @@
     .card h3 { font-size:1.25rem; margin-bottom:10px; }
     .card p { color:var(--muted); font-size:.96rem; }
     .stack { margin-top:16px; color:var(--gold); font-weight:600; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; }
+    .card.wide { margin-top:22px; }
+    .card p a { color:var(--navy); font-weight:500; }
 
     .featured { margin-top:22px; display:flex; gap:32px; align-items:center; justify-content:space-between; flex-wrap:wrap; background:var(--navy); color:#fff; border-radius:22px; padding:36px; box-shadow:0 16px 40px rgba(28,58,94,.22); }
     .featured .info { flex:1 1 380px; }
@@ -84,7 +88,10 @@
     footer { text-align:center; padding:30px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line); }
 
     @media (max-width:760px) {
-      nav ul { display:none; }
+      .menu-btn { display:block; }
+       nav ul { display:none; position:absolute; top:68px; left:0; right:0; flex-direction:column; gap:0; background:var(--bg); border-bottom:1px solid var(--line); padding:8px 24px 16px; }
+       nav ul.open { display:flex; }
+       nav ul a { display:block; padding:12px 0; }
       .hero { padding-top:44px; }
       .photo-box { width:260px; height:330px; }
       .photo-box::before { right:-14px; }
@@ -104,14 +111,15 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#beyond">Beyond Code</a></li>
       <li><a href="#contact">Contact</a></li>
-    </ul>
+        </ul>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false">☰</button>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
     <div class="hero-text">
-      <h1>Software developer <em>who listens first.</em></h1>
+      <h1>Software developer <em>turning ideas into solutions.</em></h1>
       <p>I'm Naiga Hawah, a software developer in Kampala. I build clean, useful web products from the interface people see to the backend that powers it.</p>
       <div class="btns">
         <a href="#projects" class="btn primary">See my work</a>
@@ -131,7 +139,7 @@
     <h2>Between the client <em>and the code.</em></h2>
     <p>I'm a Software Engineering student at ISBAT University in Kampala. I started out on the frontend  then grew into backend work with Django. I enjoy seeing a whole feature come together, from the button someone clicks to the data behind it.</p>
     <p>I'm currently building a SACCO management system with a team, as well as doing the research and team-building behind IntelliFlow, a bigger idea for AI-powered traffic signals on Ugandan roads.</p>
-    <p>From my experience with clients, I've learned that clear communication is key. That's why I explain my ideas clearly, listen carefully to what users need, and turn it into something simple that works.</p>
+        <p>From my experience, good software starts with listening. I ask what users need, then build something simple that works.</p>
     <div class="facts">
       <div class="fact"><small>Studying</small>Software Engineering, ISBAT University</div>
       <div class="fact"><small>Currently building</small>A SACCO system, with a team</div>
@@ -176,6 +184,12 @@
       </div>
     </div>
 
+    <div class="card wide">
+      <h3>Auto Motor System · 2022</h3>
+      <p>A system that warns drivers when engine coolant is low, using red and green lights, so they never have to open the hood. I led the team that built it with Arduino and IoT kits at STEM Cafe, Innovation Village, Ntinda. It won first place in STEM competitions in Uganda and was featured in the <a href="https://www.monitor.co.ug/uganda/news/national/st-peter-s-naalya-students-develop-system-to-check-car-water-levels-3898734" target="_blank" rel="noopener">Daily Monitor</a>.</p>
+      <div class="stack">Arduino · IoT · Team lead · 1st place</div>
+    </div>
+
     <div class="featured">
       <div class="info">
         <span class="tag">Featured venture · Website coming soon</span>
@@ -183,8 +197,7 @@
         <p>AI traffic intelligence for Uganda's real roads: computer vision on existing cameras to read traffic and improve signal timing. I'm researching it and gathering the founding team. It's a big project, so it will have its own website.</p>
         <div class="stack">Research · AI · Team building</div>
       </div>
-      <!-- Replace the # below with your IntelliFlow website address when it's ready -->
-      <a href="#" class="btn" target="_blank" rel="noopener">Visit IntelliFlow →</a>
+      <a href="#contact" class="btn">Follow the journey →</a>
     </div>
   </div>
 </section>
@@ -200,7 +213,7 @@
       </div>
       <div class="card">
         <h3>Fruit Garden</h3>
-        <p>My fresh juice business, which keeps me close to customers, pricing, and the daily work of making something people want.</p>
+        <p>My business, which keeps me close to customers, pricing, and the daily work of making something people want.</p>
       </div>
       <div class="card">
         <h3>Always learning</h3>
