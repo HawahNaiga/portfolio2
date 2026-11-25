@@ -34,11 +34,12 @@
     nav .wrap { display:flex; justify-content:space-between; align-items:center; height:68px; }
     .logo { font-family:var(--serif); font-weight:600; font-size:1.3rem; text-decoration:none; }
     .logo span { color:var(--gold); }
-    nav ul { display:flex; gap:32px; list-style:none; }
+    nav ul { display:flex; gap:32px; list-style:none; align-items:center; }
     nav ul a { text-decoration:none; color:var(--muted); font-size:.82rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
     nav ul a:hover { color:var(--navy); }
 
     .menu-btn { display:none; background:none; border:1.5px solid var(--navy); color:var(--navy); border-radius:10px; padding:6px 12px; font-size:1.2rem; cursor:pointer; }
+    .theme-btn { background:none; border:1.5px solid var(--line); color:var(--navy); border-radius:999px; padding:4px 10px; font-size:1rem; cursor:pointer; }
 
     .hero { padding:80px 0 70px; }
     .hero .wrap { display:flex; gap:56px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
@@ -72,6 +73,9 @@
     .stack { margin-top:16px; color:var(--gold); font-weight:600; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; }
     .card.wide { margin-top:22px; }
     .card p a { color:var(--navy); font-weight:500; }
+    .shot { width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; border-radius:12px; border:1px solid var(--line); margin-bottom:18px; display:block; }
+    .shot.logo { object-fit:contain; background:#fff; padding:14px; }
+    .thumb { width:100%; height:190px; background:#1c3a5e; border-radius:12px; margin-bottom:18px; display:block; }
 
     .featured { margin-top:22px; display:flex; gap:32px; align-items:center; justify-content:space-between; flex-wrap:wrap; background:var(--navy); color:#fff; border-radius:22px; padding:36px; box-shadow:0 16px 40px rgba(28,58,94,.22); }
     .featured .info { flex:1 1 380px; }
@@ -87,11 +91,23 @@
     .contact .btns { justify-content:center; }
     footer { text-align:center; padding:30px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line); }
 
+    .next { display:flex; align-items:center; justify-content:center; width:40px; height:40px; margin:48px auto 0; border:1.5px solid var(--line); border-radius:50%; color:var(--gold); text-decoration:none; font-size:1.1rem; background:var(--card); transition:transform .2s, border-color .2s; }
+    .next:hover { transform:translateY(3px); border-color:var(--gold); }
+    .next.up:hover { transform:translateY(-3px); }
+
+    html[data-theme="dark"] { --bg:#0f1b2d; --navy:#e8edf3; --card:#16263b; --line:#2a3b52; --muted:#a3b1c2; }
+    html[data-theme="dark"] nav { background:rgba(15,27,45,.94); }
+    html[data-theme="dark"] .btn.primary { background:var(--gold); border-color:var(--gold); color:#1c3a5e; box-shadow:none; }
+    html[data-theme="dark"] .featured { background:#1c3a5e; }
+    html[data-theme="dark"] .featured .btn { color:#1c3a5e; }
+    html[data-theme="dark"] .badge { background:var(--card); }
+
     @media (max-width:760px) {
       .menu-btn { display:block; }
-       nav ul { display:none; position:absolute; top:68px; left:0; right:0; flex-direction:column; gap:0; background:var(--bg); border-bottom:1px solid var(--line); padding:8px 24px 16px; }
-       nav ul.open { display:flex; }
-       nav ul a { display:block; padding:12px 0; }
+      nav ul { display:none; position:absolute; top:68px; left:0; right:0; flex-direction:column; align-items:flex-start; gap:0; background:var(--bg); border-bottom:1px solid var(--line); padding:8px 24px 16px; }
+      nav ul.open { display:flex; }
+      nav ul a { display:block; padding:12px 0; }
+      nav ul li:last-child { padding-top:8px; }
       .hero { padding-top:44px; }
       .photo-box { width:260px; height:330px; }
       .photo-box::before { right:-14px; }
@@ -99,6 +115,14 @@
       .featured { padding:28px; }
     }
   </style>
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) {}
+      var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+  </script>
 </head>
 <body>
 
@@ -111,7 +135,8 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#beyond">Beyond Code</a></li>
       <li><a href="#contact">Contact</a></li>
-        </ul>
+      <li><button class="theme-btn" aria-label="Switch theme">🌙</button></li>
+    </ul>
     <button class="menu-btn" aria-label="Menu" aria-expanded="false">☰</button>
   </div>
 </nav>
@@ -137,9 +162,9 @@
   <div class="wrap">
     <span class="label">About</span>
     <h2>Between the client <em>and the code.</em></h2>
-    <p>I'm a Software Engineering student at ISBAT University in Kampala. I started out on the frontend  then grew into backend work with Django. I enjoy seeing a whole feature come together, from the button someone clicks to the data behind it.</p>
+    <p>I'm a Software Engineering student at ISBAT University in Kampala. I started out on the frontend, then grew into backend work with Django. I enjoy seeing a whole feature come together, from the button someone clicks to the data behind it.</p>
     <p>I'm currently building a SACCO management system with a team, as well as doing the research and team-building behind IntelliFlow, a bigger idea for AI-powered traffic signals on Ugandan roads.</p>
-        <p>From my experience, good software starts with listening. I ask what users need, then build something simple that works.</p>
+    <p>From my experience, good software starts with listening. I ask what users need, then build something simple that works.</p>
     <div class="facts">
       <div class="fact"><small>Studying</small>Software Engineering, ISBAT University</div>
       <div class="fact"><small>Currently building</small>A SACCO system, with a team</div>
@@ -173,11 +198,13 @@
     <h2>Things I've <em>built.</em></h2>
     <div class="grid">
       <div class="card">
+        <img class="shot" src="sacco-login.png" alt="SACCO sign-in page">
         <h3>SACCO</h3>
         <p>A management system for a savings cooperative, with dashboards for each role and a member dashboard where features are unlocked with manager approval. I'm building it with a team.</p>
         <div class="stack">React · Vite · Django</div>
       </div>
       <div class="card">
+        <img class="shot logo" src="family-tracker-logo.png" alt="Family Tracker logo">
         <h3>Family Tracker 2.0</h3>
         <p>My frontend project during my internship at Yukon Software, where I worked with a real team on a product people use.</p>
         <div class="stack">Frontend · Teamwork</div>
@@ -185,6 +212,15 @@
     </div>
 
     <div class="card wide">
+      <svg class="thumb" viewBox="0 0 420 180" role="img" aria-label="Illustration of the red and green coolant warning lights">
+        <rect width="420" height="180" rx="12" fill="#1c3a5e"/>
+        <path d="M90 50 C90 50 66 84 66 104 a24 24 0 0 0 48 0 C114 84 90 50 90 50 Z" fill="#60a5fa"/>
+        <rect x="150" y="62" width="200" height="56" rx="28" fill="#0f1b2d"/>
+        <circle cx="200" cy="90" r="16" fill="#ef4444"/>
+        <circle cx="300" cy="90" r="16" fill="#22c55e"/>
+        <text x="200" y="146" fill="#cbd5e1" font-size="14" text-anchor="middle" font-family="Inter, sans-serif">LOW</text>
+        <text x="300" y="146" fill="#cbd5e1" font-size="14" text-anchor="middle" font-family="Inter, sans-serif">OK</text>
+      </svg>
       <h3>Auto Motor System · 2022</h3>
       <p>A system that warns drivers when engine coolant is low, using red and green lights, so they never have to open the hood. I led the team that built it with Arduino and IoT kits at STEM Cafe, Innovation Village, Ntinda. It won first place in STEM competitions in Uganda and was featured in the <a href="https://www.monitor.co.ug/uganda/news/national/st-peter-s-naalya-students-develop-system-to-check-car-water-levels-3898734" target="_blank" rel="noopener">Daily Monitor</a>.</p>
       <div class="stack">Arduino · IoT · Team lead · 1st place</div>
@@ -197,7 +233,7 @@
         <p>AI traffic intelligence for Uganda's real roads: computer vision on existing cameras to read traffic and improve signal timing. I'm researching it and gathering the founding team. It's a big project, so it will have its own website.</p>
         <div class="stack">Research · AI · Team building</div>
       </div>
-      <a href="#contact" class="btn">Follow the journey →</a>
+      <a href="#contact" class="btn">Get in touch about IntelliFlow →</a>
     </div>
   </div>
 </section>
@@ -237,6 +273,43 @@
 </section>
 
 <footer>Naiga Hawah · Software Developer · Kampala, Uganda</footer>
+
+<script>
+  const menuBtn = document.querySelector('.menu-btn');
+  const menu = document.querySelector('nav ul');
+  menuBtn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  const themeBtn = document.querySelector('.theme-btn');
+  function setIcon() {
+    themeBtn.textContent = document.documentElement.dataset.theme === 'dark' ? '☀️' : '🌙';
+  }
+  setIcon();
+  themeBtn.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    setIcon();
+  });
+
+  const order = ['top', 'about', 'skills', 'projects', 'beyond', 'contact'];
+  order.forEach((id, i) => {
+    const section = document.getElementById(id);
+    const last = i === order.length - 1;
+    const arrow = document.createElement('a');
+    arrow.href = '#' + (last ? 'top' : order[i + 1]);
+    arrow.className = 'next' + (last ? ' up' : '');
+    arrow.textContent = last ? '↑' : '↓';
+    arrow.setAttribute('aria-label', last ? 'Back to top' : 'Go to ' + order[i + 1] + ' section');
+    (id === 'top' ? section : section.querySelector('.wrap')).appendChild(arrow);
+  });
+</script>
 
 </body>
 </html>
